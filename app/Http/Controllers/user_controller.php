@@ -126,6 +126,13 @@ class user_controller extends Controller
         return view("fitur.dashboard", compact("loc","data"));
     }
 
+    public function filter(Request $req) {
+        $loc = "dashboard";
+        $data = jadwal::all()->where('jenis', $req['jenis'])
+        ->where('tanggal', $req['waktu']);
+        return view("fitur.dashboard", compact("loc","data"));
+    }
+
     public function list_peserta() {
         $loc = "list_peserta";
         $data = User::all()->where("level", 1);

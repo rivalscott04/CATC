@@ -90,4 +90,14 @@ class jadwal_controller extends Controller
         listjadwal::create($data);
         return redirect("dashboard");
     }
+
+    public function jadwal_peserta() {
+        $data = listjadwal::join('jadwals', 'listjadwals.id_jadwal', '=', 'jadwals.id_jadwal')
+        ->join('users', 'listjadwals.id_peserta', '=', 'users.id')
+        ->select('users.*', 'jadwals.*', 'listjadwals.id_list')
+        ->where('jadwals.id_jadwal',1)->get();
+        // dd($data);
+        $loc ="dashboard";
+        return view("fitur.peserta_ujian", compact("loc", "data"));
+    }
 }

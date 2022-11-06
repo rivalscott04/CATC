@@ -25,19 +25,20 @@
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row mb-3">
         <div class="col-lg-12">
-            <form>
+            <form action="/dashboard" method="POST">
+                @csrf
                 <div class="row">
                   <div class="col">
                     <p style="font-size: 18px;">Jenis Ujian</p>
-                    <select class="js-example-basic-single form-control" name="state">
+                    <select class="js-example-basic-single form-control" name="jenis">
                         <option value="AZ">AZ</option>
                         <option value="DP">DP</option>
                         <option value="AI">AI</option>
                       </select>
                   </div>
                   <div class="col">
-                    <p style="font-size: 18px;">Bulan</p>
-                    <input type="date" id="datepicker"  class="form-control rounded border-0" height="3px" required />
+                    <p style="font-size: 18px;">Waktu</p>
+                    <input type="date" name="waktu" id="datepicker"  class="form-control rounded border-0" height="3px" required />
                   </div>
                   <div class="col mt-5">
                     <button class="btn btn-lg btn-primary"> Filter</button>
