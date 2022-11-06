@@ -36,6 +36,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/simpan_jadwal', [jadwal_controller::class, 'simpan_jadwal']);
     Route::post('/hapus_ujian', [jadwal_controller::class, 'hapus_ujian']);
 
+    Route::get('/ganti_password', [user_controller::class, 'tampil_ganti_password']);
+    Route::post('/ganti_password', [user_controller::class, 'ganti_password']);
     Route::get('/logout', [user_controller::class, 'logout']);
 });
 

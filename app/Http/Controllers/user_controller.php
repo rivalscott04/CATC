@@ -13,6 +13,7 @@ use SpreadsheetReader;
 require 'excel/SpreadsheetReader.php';
 
 use Exception;
+use Illuminate\Support\Facades\Hash;
 
 class user_controller extends Controller
 {
@@ -137,6 +138,26 @@ class user_controller extends Controller
         $loc = "list_peserta";
         $data = User::all()->where("level", 1);
         return view("fitur.list_peserta", compact("loc","data"));
+    }
+
+
+    public function tampil_ganti_password()
+    {
+        return view('auth.ganti_password');
+    }
+
+    public function ganti_password(Request $req)
+    {
+        if (Hash::check($req['lama'], Auth::user()->password)) {
+            $id = Auth::user()->id;
+            $user = User::all()->where("id", $id)->first()->update([
+                'password' => Hash::make($req['baru']),
+            ]);
+        } else {
+            return redirect('/ganti_password')->with('status', 'Kata sandi lama anda salah!');
+        }
+
+        return redirect('/dashboard')->with('success', 'Password berhasil diganti!');
     }
 
     public function logout()

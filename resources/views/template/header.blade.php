@@ -10,11 +10,11 @@
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                <i class="fa fa-user"></i> Profil
+                                <i class="fa fa-th-list"></i> 
                             </a>
-                            {{-- <ul class="dropdown-menu dropdown-alerts">
+                            <ul class="dropdown-menu dropdown-alerts">
                                 <li>
-                                    <a href="mailbox.html" class="dropdown-item">
+                                    <a href="profil" class="dropdown-item">
                                         <div>
                                             <i class="fa fa-user fa-fw"></i> Profil
                                         </div>
@@ -22,40 +22,28 @@
                                 </li>
                                 <li class="dropdown-divider"></li>
                                 <li>
-                                    <a href="profile.html" class="dropdown-item">
+                                    <a href="/ganti_password" class="dropdown-item">
                                         <div>
-                                            <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                            <span class="float-right text-muted small">12 minutes ago</span>
+                                            <i class="fa fa-key fa-fw"></i> Ganti Password
                                         </div>
                                     </a>
                                 </li>
                                 <li class="dropdown-divider"></li>
                                 <li>
-                                    <a href="grid_options.html" class="dropdown-item">
-                                        <div>
-                                            <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                            <span class="float-right text-muted small">4 minutes ago</span>
-                                        </div>
+                                    <a href="logout">
+                                        <i class="fa fa-sign-out"></i> Keluar
                                     </a>
                                 </li>
                                 <li class="dropdown-divider"></li>
-                                <li>
-                                    <div class="text-center link-block">
-                                        <a href="notifications.html" class="dropdown-item">
-                                            <strong>See All Alerts</strong>
-                                            <i class="fa fa-angle-right"></i>
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul> --}}
+                            </ul>
                         </li>
 
 
-                        <li>
+                        {{-- <li>
                             <a href="logout">
                                 <i class="fa fa-sign-out"></i> Keluar
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
 
                 </nav>
