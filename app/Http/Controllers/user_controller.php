@@ -22,6 +22,14 @@ class user_controller extends Controller
         return view('Auth.login');
     }
 
+    public function tampil_profil()
+    {
+        $loc = "";
+        return view('fitur.profil',[
+            'loc' => $loc
+        ]);
+    }
+    
     public function login(Request $request)
     {
         // dd(Admin::bersih($request->input('username')));

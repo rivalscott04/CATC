@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/',  [user_controller::class, 'dashboard']);
+    Route::get('/profil',  [user_controller::class, 'tampil_profil']);
 
     Route::get('/dashboard', [user_controller::class, 'dashboard']);
     Route::post('/dashboard', [user_controller::class, 'filter']);
