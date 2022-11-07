@@ -137,8 +137,13 @@ class user_controller extends Controller
 
     public function filter(Request $req) {
         $loc = "dashboard";
+        if ($req['jenis']== 'all' ) {
+            $data = jadwal::all()->where('tanggal', $req['waktu']);
+        }else { 
         $data = jadwal::all()->where('jenis', $req['jenis'])
         ->where('tanggal', $req['waktu']);
+        }
+
         return view("fitur.dashboard", compact("loc","data"));
     }
 

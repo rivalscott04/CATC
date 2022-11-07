@@ -30,7 +30,8 @@
                 <div class="row">
                   <div class="col">
                     <p style="font-size: 18px;">Jenis Ujian</p>
-                    <select class="js-example-basic-single form-control" name="jenis">
+                    <select class="form-control" name="jenis">
+                        <option value="all">semua</option>
                         <option value="AZ">AZ</option>
                         <option value="DP">DP</option>
                         <option value="AI">AI</option>
