@@ -41,6 +41,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($data as $item)
+                                <tr>
                                     <td class="text-center">{{$loop->index +1}}</td>
                                     <td class="text-center">{{$item["jenis"]}}</td>
                                     <td class="text-center">{{$item["tanggal"]}}</td>
@@ -54,6 +55,8 @@
                                             <button class="btn btn-danger" type="submit" onclick="confirm('Apakah anda yakin?')"> Hapus</button>
                                         </form>
                                     </td>
+                                </tr>
+                                    
                                 @endforeach
                                
                             </tbody>

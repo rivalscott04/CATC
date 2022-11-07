@@ -14,6 +14,7 @@ class jadwal_controller extends Controller
          $data = listjadwal::join('jadwals', 'listjadwals.id_jadwal', '=', 'jadwals.id_jadwal')
         ->join('users', 'listjadwals.id_peserta', '=', 'users.id')
         ->select('users.*', 'jadwals.*', 'listjadwals.id_list')
+        ->where('id', Auth::user()->id)
         ->get();
         // dd($data);
         $loc = "list_jadwal";
@@ -91,11 +92,12 @@ class jadwal_controller extends Controller
         return redirect("dashboard");
     }
 
-    public function jadwal_peserta() {
+    public function jadwal_peserta(Request $req) {
+        // dd($req);
         $data = listjadwal::join('jadwals', 'listjadwals.id_jadwal', '=', 'jadwals.id_jadwal')
         ->join('users', 'listjadwals.id_peserta', '=', 'users.id')
         ->select('users.*', 'jadwals.*', 'listjadwals.id_list')
-        ->where('jadwals.id_jadwal',1)->get();
+        ->where('jadwals.id_jadwal',$req['id'])->get();
         // dd($data);
         $loc ="dashboard";
         return view("fitur.peserta_ujian", compact("loc", "data"));

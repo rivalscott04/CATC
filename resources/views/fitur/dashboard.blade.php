@@ -70,6 +70,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($data as $item)
+                                
                                 <tr class="gradeA">
                                     <td class="text-center">{{$item["jenis"]}}</td>
                                     <td class="text-center">{{$item["tanggal"]}}</td>
@@ -77,9 +78,14 @@
                                     <td class="text-center">{{$item["kuota"]}}</td>
                                     <td class="text-center">
                                         @if (Auth::user()->level ==0)
+                                        <form action="peserta_ujian" class="float-left " method="POST">
+                                            @csrf
+                                            <input type="hidden" value="{{$item['id_jadwal']}}" name="id">
+                                            <button class="btn btn-sm btn-primary">Lihat</button>
+                                        </form>
                                         <form action="hapus_jadwal" method="POST">
                                             @csrf
-                                            <input type="hidden" value="{{$item['id']}}" name="id">
+                                            <input type="hidden" value="{{$item['id_jadwal']}}" name="id">
                                             <button class="btn btn-sm btn-danger" onclick="confirm('Apakah anda yakin?')">Hapus</button>
                                         </form>
                                         @else
