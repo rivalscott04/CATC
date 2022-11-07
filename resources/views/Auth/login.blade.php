@@ -18,19 +18,17 @@
 
 <body class="gray-bg">
 
-    <div class="loginColumns animated fadeInDown">
-        <div class="row">
+    <div class="animated fadeInDown">
+        <div class="row col-lg-12">
 
-            <div class="col-md-6">
-                <h2 class="font-bold">Welcome to CATC</h2>
-
-               <img src="img/p6.jpg" width="300px" />
+            <div class="col-lg-9  pt-5 pl-5 pr-2">
+               <img src="img/kiri.jpg" width="100%" />
 
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-3 p-5">
                 <div class="logo" style=" margin:25px;">
                     <center> 
-                        <img src="img/p6.jpg" width="150px" />
+                        <img src="img/if.png" width="150px" />
                         @if (Session::has('message'))
                         <p class="alert alert-danger mt-2">{{ Session::get('message') }}</p>
                     @endif
