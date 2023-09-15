@@ -38,6 +38,9 @@
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Id registrasi</th>
                                     <th class="text-center">Email</th>
+                                    <th class="text-center">KTP</th>
+                                    <th class="text-center">Komitmen</th>
+                                    <th class="text-center">Lulus</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -48,6 +51,27 @@
                                 <td class="text-center">{{$item["nama"]}}</td>
                                 <td class="text-center">{{$item["no_peserta"]}}</td>
                                 <td class="text-center">{{$item["email"]}}</td>
+                                <td class="text-center">
+                                    @if ($item['berkas_ktp'] != null)
+                                        <button class="btn btn-primary btn-lg">Lihat</button>
+                                    @else
+                                        <button class="btn btn-lg btn-danger">Belum</button>
+                                    @endif
+                                </td>
+                                <td class="text-center">
+                                    @if ($item['berkas_komit'] != null)
+                                        <button class="btn btn-primary btn-lg">Lihat</button>
+                                    @else
+                                        <button class="btn btn-lg btn-danger">Belum</button>
+                                    @endif
+                                </td>
+                                <td class="text-center">
+                                    @if ($item['berkas_lulus'] != null)
+                                        <button class="btn btn-primary btn-lg">Lihat</button>
+                                    @else
+                                        <button class="btn btn-lg btn-danger">Belum</button>
+                                    @endif
+                                </td>
                                 <td class="text-center">
                                     <button class="btn btn-primary">Klik Me</button>
                                 </td>
