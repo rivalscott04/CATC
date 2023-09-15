@@ -29,6 +29,9 @@ class User extends Authenticatable
         'dp',
         'ai',
         'level',
+        'berkas_ktp',
+        'berkas_komit',
+        'berkas_lulus',
         'password',
     ];
 

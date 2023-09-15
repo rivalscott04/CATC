@@ -38,7 +38,7 @@
                 @csrf
                 <div class="form-group">
                     <p style="text-align: left; font-size: 14px">Password Lama</p>
-                    <input type="password" name="lama" class="form-control" placeholder="Username" required="">
+                    <input type="password" name="lama" class="form-control" placeholder="Password Lama" required="">
                 </div>
                 <div class="form-group">
                     <p style="text-align: left; font-size: 14px">Password Baru</p>

@@ -25,11 +25,11 @@ class user_controller extends Controller
     public function tampil_profil()
     {
         $loc = "";
-        return view('fitur.profil',[
+        return view('fitur.profil', [
             'loc' => $loc
         ]);
     }
-    
+
     public function login(Request $request)
     {
         // dd(Admin::bersih($request->input('username')));
@@ -51,6 +51,52 @@ class user_controller extends Controller
         }
     }
 
+    public function upload_berkas(Request $request)
+    {
+        // Create a new record
+        $record = User::find(Auth::user()->id);
+
+        // Handle file uploads for field1
+        if ($request->hasFile('berkas_ktp')) {
+            $file = $request->file('berkas_ktp');
+            $exten = $file->getClientOriginalExtension();
+            $nama = 'KTP_' . Auth::user()->nama . '_' . substr($request['tanggal'], 0, 10) . '.' . $exten;
+            $tujuan_upload = 'ktp/';
+            $file->move($tujuan_upload, $nama);
+            $record->berkas_ktp = $nama;
+        }
+
+        if ($request->hasFile('berkas_komit')) {
+            $file = $request->file('berkas_komit');
+            $exten = $file->getClientOriginalExtension();
+            $nama = 'Komitmen_' . Auth::user()->nama . '_' . substr($request['tanggal'], 0, 10) . '.' . $exten;
+            $tujuan_upload = 'komitmen/';
+            $file->move($tujuan_upload, $nama);
+            $record->berkas_komit = $nama;
+        }
+
+        if ($request->hasFile('berkas_lulus')) {
+            $file = $request->file('berkas_lulus');
+            $exten = $file->getClientOriginalExtension();
+            $nama = 'Lulus_' . Auth::user()->nama . '_' . substr($request['tanggal'], 0, 10) . '.' . $exten;
+            $tujuan_upload = 'lulus/';
+            $file->move($tujuan_upload, $nama);
+            $record->berkas_lulus = $nama;
+        }
+        // Save the record
+        $record->berkas_status = 1;
+        $record->save();
+        return redirect('dashboard');
+    }
+
+    public function terima_berkas(Request $request)
+    {
+    }
+
+    public function tolak_berkas(Request $request)
+    {
+    }
+
     public function tambah_peserta(Request $req)
     {
         // echo "masuk";
@@ -61,7 +107,7 @@ class user_controller extends Controller
         $tujuan_upload = 'data/';
         $file->move($tujuan_upload, $nama);
         try {
-            $Spreadsheet = new SpreadsheetReader($tujuan_upload.$nama);
+            $Spreadsheet = new SpreadsheetReader($tujuan_upload . $nama);
             // dd($Spreadsheet);
             // $Sheets = $Spreadsheet -> Sheets();		
 
@@ -94,7 +140,7 @@ class user_controller extends Controller
                     $user->level = 1;
                     $user->password = bcrypt("akunbaru");
                     $user->save();
-                    
+
 
                     // echo $Row[0];
                     // echo "[0]";
@@ -129,28 +175,31 @@ class user_controller extends Controller
         return redirect("/list_peserta");
     }
 
-    public function dashboard() {
+    public function dashboard()
+    {
         $loc = "dashboard";
         $data = jadwal::all();
-        return view("fitur.dashboard", compact("loc","data"));
+        return view("fitur.dashboard", compact("loc", "data"));
     }
 
-    public function filter(Request $req) {
+    public function filter(Request $req)
+    {
         $loc = "dashboard";
-        if ($req['jenis']== 'all' ) {
+        if ($req['jenis'] == 'all') {
             $data = jadwal::all()->where('tanggal', $req['waktu']);
-        }else { 
-        $data = jadwal::all()->where('jenis', $req['jenis'])
-        ->where('tanggal', $req['waktu']);
+        } else {
+            $data = jadwal::all()->where('jenis', $req['jenis'])
+                ->where('tanggal', $req['waktu']);
         }
 
-        return view("fitur.dashboard", compact("loc","data"));
+        return view("fitur.dashboard", compact("loc", "data"));
     }
 
-    public function list_peserta() {
+    public function list_peserta()
+    {
         $loc = "list_peserta";
         $data = User::all()->where("level", 1);
-        return view("fitur.list_peserta", compact("loc","data"));
+        return view("fitur.list_peserta", compact("loc", "data"));
     }
 
 
