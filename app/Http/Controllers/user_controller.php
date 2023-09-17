@@ -137,6 +137,7 @@ class user_controller extends Controller
                         'az' => $Row[7] == 'YA' ? true : false,
                         'dp' => $Row[8]  == 'YA' ? true : false,
                         'ai' => $Row[9]  == 'YA' ? true : false,
+                        'berkas_status' => 0,
                         'level' => 0,
                         'password' => bcrypt("akunbaru"),
                     ];
