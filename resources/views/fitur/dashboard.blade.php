@@ -1,25 +1,28 @@
 @extends('app')
 
 @section('content')
-    @if (Auth::user()->berkas_status == 0)
+    @if (Auth::user()->berkas_status == 0 || Auth::user()->berkas_status == 2)
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox ">
                     <div class="ibox-title">
                         <h5>Lengkapi berkas terlebih dahulu</h5>
                     </div>
-                    <div class="ibox-content" style=" min-height: calc(100vh - 244px); ">
 
+                    <div class="ibox-content" style=" min-height: calc(100vh - 244px); ">
+                        @if (Auth::user()->berkas_status == 2)
+                            <h3 class="text-danger">Berkas ditolak harap upload ulang dokumen</h3>
+                        @endif
                         <form action="/upload_berkas" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group"><label>KTP *</label>
-                                <input type="file" placeholder="Enter tema" class="form-control" name="berkas_ktp">
+                                <input type="file" placeholder="Enter tema" class="form-control" name="berkas_ktp" accept=".pdf, .doc, .docx" required>
                             </div>
                             <div class="form-group"><label>Form Komitmen *</label>
-                                <input type="file" placeholder="Enter name" class="form-control" name="berkas_komit">
+                                <input type="file" placeholder="Enter name" class="form-control" name="berkas_komit" accept=".pdf, .doc, .docx" required>
                             </div>
                             <div class="form-group"><label>Bukti Lulus</label>
-                                <input type="file" placeholder="Enter name" class="form-control" name="berkas_lulus">
+                                <input type="file" placeholder="Enter name" class="form-control" accept=".pdf, .doc, .docx" name="berkas_lulus">
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-lg btn-primary"> Simpan </button>
@@ -32,7 +35,7 @@
             </div>
         </div>
     @elseif (Auth::user()->berkas_status == 1)
-           <p>Menunggu konfirmasi</p>
+        <p>Menunggu konfirmasi</p>
     @else
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">

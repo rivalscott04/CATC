@@ -89,13 +89,26 @@ class user_controller extends Controller
         return redirect('dashboard');
     }
 
-    public function terima_berkas(Request $request)
+    public function terima_berkas($id)
     {
+         // Create a new record
+         $record = User::find($id);
+         $record->berkas_status = 3;
+         $record->save();
+         
+         return redirect()->back();
     }
 
-    public function tolak_berkas(Request $request)
+    public function tolak_berkas($id)
     {
+         // Create a new record
+         $record = User::find($id);
+         $record->berkas_status = 2;
+         $record->save();
+
+         return redirect()->back();
     }
+    
 
     public function tambah_peserta(Request $req)
     {

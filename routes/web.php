@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'user'], function () { 
         Route::get('/',  [user_controller::class, 'dashboard']);
         Route::get('/profil',  [user_controller::class, 'tampil_profil']);
+        Route::get('/tolak_berkas/{id}',  [user_controller::class, 'tolak_berkas']);
+        Route::get('/terima_berkas/{id}',  [user_controller::class, 'terima_berkas']);
     
         Route::get('/dashboard', [user_controller::class, 'dashboard']);
         Route::post('/dashboard', [user_controller::class, 'filter']);

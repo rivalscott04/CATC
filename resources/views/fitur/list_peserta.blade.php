@@ -42,6 +42,7 @@
                                         <th class="text-center">KTP</th>
                                         <th class="text-center">Komitmen</th>
                                         <th class="text-center">Lulus</th>
+                                        <th class="text-center">Status Berkas</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -73,9 +74,21 @@
                                                     <button class="btn btn-lg btn-danger">Belum</button>
                                                 @endif
                                             </td>
+
+                                            <td class="text-center">
+                                                @if ($item['berkas_status'] == 0)
+                                                    <button class="btn btn-danger btn-lg">Belum Upload</button>
+                                                @elseif($item['berkas_status'] == 1)
+                                                    <button class="btn btn-warning btn-lg">Menunggu</button>
+                                                @elseif($item['berkas_status'] == 2)
+                                                    <button class="btn btn-danger btn-lg">Ditolak</button>
+                                                @else
+                                                    <button class="btn btn-lg btn-primary">Diterma</button>
+                                                @endif
+                                            </td>
                                             <td class="text-center">
                                                 <button class="btn btn-primary" data-toggle="modal" data-target="#pdf"
-                                                    onclick="pdf_view('{{ $item['berkas_ktp'] }}','{{ $item['berkas_komit'] }}','{{ $item['berkas_lulus'] }}')">Lihat</button>
+                                                    onclick="pdf_view('{{ $item['berkas_ktp'] }}','{{ $item['berkas_komit'] }}','{{ $item['berkas_lulus'] }}','{{ $item['id'] }}')">Lihat</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -121,7 +134,7 @@
                     {{-- <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
                             class="sr-only">Close</span></button> --}}
                     {{-- <i class="fa fa-laptop modal-icon"></i> --}}
-                    
+
                     <center>
                         <h4 class="modal-title">Proposal</h4>
                         <button class="btn btn-sm btn-danger" id="tolak">Tolak</button>

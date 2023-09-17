@@ -1,26 +1,51 @@
-function pdf_view(ktp,komit,lulus) {
-    var embedElement = document.getElementById("pdf_file");
+function pdf_view(ktp,komit,lulus,id) {
+    console.log(id);
+    console.log(ktp);
+    console.log(komit);
+    console.log(lulus);
+    var embedKtp = document.getElementById("pdf_file");
     if (ktp !== '') {
-        embedElement.src = 'ktp/' + ktp;
+        embedKtp.src = 'ktp/' + ktp;
+        console.log('ktp_ada');
     }else {
-        embedElement.style.display = 'block';
+        embedKtp.style.display = 'block';
+        embedKtp.src = '';
+        console.log('ktp_kosong');
     }
-    var embedElement = document.getElementById("pdf_file2");
+    var embedKomit = document.getElementById("pdf_file2");
     if (komit !== '') {
-        embedElement.src = 'komitmen/' + komit;
+        embedKomit.src = 'komitmen/' + komit;
     }else {
-        embedElement.style.display = 'block';
+        embedKomit.src = '';
+        embedKomit.style.display = 'block';
     }
-    var embedElement = document.getElementById("pdf_file3");
+    var embedLulus = document.getElementById("pdf_file3");
     if (lulus !== '') {
-        embedElement.src = 'lulus/' + lulus;
+        embedLulus.src = 'lulus/' + lulus;
     }else {
-        embedElement.style.display = 'block';
+        embedLulus.src = '';
+        embedLulus.style.display = 'block';
     }
-    // document.getElementById("unduh").addEventListener("click", function () {
-    //     window.location.href = 'pkm_file/' + data;
+    document.getElementById("tolak").addEventListener("click", function () {
+        window.location.href = 'tolak_berkas/'+id;
+    });
+    document.getElementById("terima").addEventListener("click", function () {
+        window.location.href = 'terima_berkas/'+id;
+    });
+    // document.addEventListener('click', (event) => {
+    //     const modal = document.getElementById('modal');
+    //     if (event.target !== modal) {
+    //         // closeModal();
+    //         console.log('not');
+    //         embedKomit.style.display = 'block';
+    //         embedKtp.style.display = 'block';
+    //         embedLulus.style.display = 'block';
+    //         document.removeEventListener('click', event);
+    //     }
     // });
+    
 }
+
 
 
 
