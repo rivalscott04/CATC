@@ -1,3 +1,31 @@
+function pdf_view(ktp,komit,lulus) {
+    var embedElement = document.getElementById("pdf_file");
+    if (ktp !== '') {
+        embedElement.src = 'ktp/' + ktp;
+    }else {
+        embedElement.style.display = 'block';
+    }
+    var embedElement = document.getElementById("pdf_file2");
+    if (komit !== '') {
+        embedElement.src = 'komitmen/' + komit;
+    }else {
+        embedElement.style.display = 'block';
+    }
+    var embedElement = document.getElementById("pdf_file3");
+    if (lulus !== '') {
+        embedElement.src = 'lulus/' + lulus;
+    }else {
+        embedElement.style.display = 'block';
+    }
+    // document.getElementById("unduh").addEventListener("click", function () {
+    //     window.location.href = 'pkm_file/' + data;
+    // });
+}
+
+
+
+
+
 /*
  *
  *   INSPINIA - Responsive Admin Theme
