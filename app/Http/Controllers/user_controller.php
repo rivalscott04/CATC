@@ -116,7 +116,7 @@ class user_controller extends Controller
 
         $file = $req->file('excel');
         $exten = $file->getClientOriginalExtension();
-        $nama = $req['nama'] . '_' . substr($req['tanggal'], 0, 10) . '.' . $exten;
+        $nama = 'coba'. '.' . $exten;
         $tujuan_upload = 'data/';
         $file->move($tujuan_upload, $nama);
         try {
@@ -126,6 +126,7 @@ class user_controller extends Controller
 
             foreach ($Spreadsheet as  $Row) {
                 // echo $Key.': ';
+                // dd($Row);
                 if ($Row) {
                     $data = [
                         'nama' => $Row[4],
@@ -138,9 +139,10 @@ class user_controller extends Controller
                         'dp' => $Row[8]  == 'YA' ? true : false,
                         'ai' => $Row[9]  == 'YA' ? true : false,
                         'berkas_status' => 0,
-                        'level' => 0,
+                        'level' => 1,
                         'password' => bcrypt("akunbaru"),
                     ];
+                    // dd($data)
                     $user = new User();
                     $user->nama = ucwords(strtolower($Row[4]));
                     $user->kampus = $Row[2];
@@ -152,6 +154,7 @@ class user_controller extends Controller
                     $user->DP = $Row[8] == 'YA' ? true : false;
                     $user->AI = $Row[9] == 'YA' ? true : false;
                     $user->level = 1;
+                    $user->berkas_status = 0;
                     $user->password = bcrypt("akunbaru");
                     $user->save();
 
@@ -186,7 +189,7 @@ class user_controller extends Controller
         } catch (Exception $E) {
             echo $E->getMessage();
         }
-        return redirect("/list_peserta");
+        // return redirect("/list_peserta");
     }
 
     public function dashboard()

@@ -18,7 +18,7 @@ class user
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Hash::check('123', Auth::user()->password)) {
+        if (Hash::check('akunbaru', Auth::user()->password)) {
             return redirect('/ganti_password')->with('message', 'Anda menggunakan password default harap ganti dulu sebelum melanjutkan');
         }
         return $next($request);
