@@ -16,13 +16,13 @@
                         <form action="/upload_berkas" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group"><label>KTP *</label>
-                                <input type="file" placeholder="Enter tema" class="form-control" name="berkas_ktp" accept=".pdf, .doc, .docx" required>
+                                <input type="file" placeholder="Enter tema" class="form-control" name="berkas_ktp" accept=".pdf" required>
                             </div>
                             <div class="form-group"><label>Form Komitmen *</label>
-                                <input type="file" placeholder="Enter name" class="form-control" name="berkas_komit" accept=".pdf, .doc, .docx" required>
+                                <input type="file" placeholder="Enter name" class="form-control" name="berkas_komit" accept=".pdf" required>
                             </div>
                             <div class="form-group"><label>Bukti Lulus</label>
-                                <input type="file" placeholder="Enter name" class="form-control" accept=".pdf, .doc, .docx" name="berkas_lulus">
+                                <input type="file" placeholder="Enter name" class="form-control" accept=".pdf" name="berkas_lulus">
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-lg btn-primary"> Simpan </button>
@@ -35,7 +35,31 @@
             </div>
         </div>
     @elseif (Auth::user()->berkas_status == 1)
-        <p>Menunggu konfirmasi</p>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>Menunggu Konfirmasi</h5>
+                        </div>
+                        <div class="ibox-content" style=" min-height: calc(100vh - 244px); ">
+                            <div class="pdf-container">
+                                <h2>KTP</h2>
+                                <embed class="frame" id="pdf_file" src="ktp/{{$user['berkas_ktp']}}" allowfullscreen></embed>
+                            </div>
+                            <div class="pdf-container">
+                                <h2>Komitmen</h2>
+                                <embed class="frame" id="pdf_file2" src="komitmen/{{$user['berkas_komit']}}" allowfullscreen></embed>
+                            </div>
+                            <div class="pdf-container">
+                                <h2 id="lulus">Keterangan Lulus</h2>
+                                <embed class="frame" id="pdf_file3" src="lulus/{{$user['berkas_lulus']}}" allowfullscreen></embed>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     @else
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>INSPINIA | Login</title>
+    <title>CATC | Ganti Password</title>
 
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet">
@@ -22,7 +22,7 @@
         <div>
             <div>
 
-                <h1 class="logo-name">IN+</h1>
+                <img src="img/unram_logo.png" alt="Logo Unram" style="width: 150px" class="mt-5">
 
             </div>
             <h3>Ganti Pasword</h3>

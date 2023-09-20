@@ -195,8 +195,14 @@ class user_controller extends Controller
     public function dashboard()
     {
         $loc = "dashboard";
+        $user = [
+            'berkas_ktp' => Auth::user()['berkas_ktp'],
+            'berkas_komit' => Auth::user()['berkas_komit'],
+            'berkas_lulus' => Auth::user()['berkas_lulus'],
+        ];
+        // dd($user);
         $data = jadwal::all();
-        return view("fitur.dashboard", compact("loc", "data"));
+        return view("fitur.dashboard", compact("loc", "data","user"));
     }
 
     public function filter(Request $req)
