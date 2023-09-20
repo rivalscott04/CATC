@@ -1,4 +1,4 @@
-function pdf_view(ktp,komit,lulus,id) {
+function pdf_view(ktp,komit,lpj,lulus,id) {
     console.log(id);
     console.log(ktp);
     console.log(komit);
@@ -19,7 +19,14 @@ function pdf_view(ktp,komit,lulus,id) {
         embedKomit.src = '';
         embedKomit.style.display = 'block';
     }
-    var embedLulus = document.getElementById("pdf_file3");
+    var embedKomit = document.getElementById("pdf_file3");
+    if (komit !== '') {
+        embedKomit.src = 'lpj/' + lpj;
+    }else {
+        embedKomit.src = '';
+        embedKomit.style.display = 'block';
+    }
+    var embedLulus = document.getElementById("pdf_file4");
     if (lulus !== '') {
         embedLulus.src = 'lulus/' + lulus;
     }else {

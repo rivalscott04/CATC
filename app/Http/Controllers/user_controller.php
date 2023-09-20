@@ -75,6 +75,15 @@ class user_controller extends Controller
             $record->berkas_komit = $nama;
         }
 
+        if ($request->hasFile('berkas_lpj')) {
+            $file = $request->file('berkas_lpj');
+            $exten = $file->getClientOriginalExtension();
+            $nama = 'LPJ_' . Auth::user()->nama . '_' . substr($request['tanggal'], 0, 10) . '.' . $exten;
+            $tujuan_upload = 'lpj/';
+            $file->move($tujuan_upload, $nama);
+            $record->berkas_lpj = $nama;
+        }
+
         if ($request->hasFile('berkas_lulus')) {
             $file = $request->file('berkas_lulus');
             $exten = $file->getClientOriginalExtension();

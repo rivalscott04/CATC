@@ -31,6 +31,7 @@ class User extends Authenticatable
         'level',
         'berkas_ktp',
         'berkas_komit',
+        'berkas_lpj',
         'berkas_lulus',
         'password',
     ];

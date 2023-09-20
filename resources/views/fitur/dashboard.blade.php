@@ -21,6 +21,9 @@
                             <div class="form-group"><label>Form Komitmen *</label>
                                 <input type="file" placeholder="Enter name" class="form-control" name="berkas_komit" accept=".pdf" required>
                             </div>
+                            <div class="form-group"><label>Form LPJ dan Pernyataan *</label>
+                                <input type="file" placeholder="Enter name" class="form-control" name="berkas_lpj" accept=".pdf" required>
+                            </div>
                             <div class="form-group"><label>Bukti Lulus</label>
                                 <input type="file" placeholder="Enter name" class="form-control" accept=".pdf" name="berkas_lulus">
                             </div>
@@ -48,7 +51,7 @@
                                 <embed class="frame" id="pdf_file" src="ktp/{{$user['berkas_ktp']}}" allowfullscreen></embed>
                             </div>
                             <div class="pdf-container">
-                                <h2>Komitmen</h2>
+                                <h2>Komitmen komitmen/{{$user['berkas_komit']}}</h2>
                                 <embed class="frame" id="pdf_file2" src="komitmen/{{$user['berkas_komit']}}" allowfullscreen></embed>
                             </div>
                             <div class="pdf-container">

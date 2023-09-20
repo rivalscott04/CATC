@@ -41,6 +41,7 @@
                                         <th class="text-center">Email</th>
                                         <th class="text-center">KTP</th>
                                         <th class="text-center">Komitmen</th>
+                                        <th class="text-center">LPJ dan Pernyataan</th>
                                         <th class="text-center">Lulus</th>
                                         <th class="text-center">Status Berkas</th>
                                         <th class="text-center">Action</th>
@@ -68,6 +69,13 @@
                                                 @endif
                                             </td>
                                             <td class="text-center">
+                                                @if ($item['berkas_lpj'] != null)
+                                                    <button class="btn btn-primary btn-lg">Sudah</button>
+                                                @else
+                                                    <button class="btn btn-lg btn-danger">Belum</button>
+                                                @endif
+                                            </td>
+                                            <td class="text-center">
                                                 @if ($item['berkas_lulus'] != null)
                                                     <button class="btn btn-primary btn-lg">Sudah</button>
                                                 @else
@@ -88,7 +96,7 @@
                                             </td>
                                             <td class="text-center">
                                                 <button class="btn btn-primary" data-toggle="modal" data-target="#pdf"
-                                                    onclick="pdf_view('{{ $item['berkas_ktp'] }}','{{ $item['berkas_komit'] }}','{{ $item['berkas_lulus'] }}','{{ $item['id'] }}')">Lihat</button>
+                                                    onclick="pdf_view('{{ $item['berkas_ktp'] }}','{{ $item['berkas_komit'] }}','{{ $item['berkas_lpj'] }}','{{ $item['berkas_lulus'] }}','{{ $item['id'] }}')">Lihat</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -164,8 +172,12 @@
                         <iframe class="frame" id="pdf_file2" allowfullscreen></iframe>
                     </div>
                     <div class="pdf-container">
-                        <h2 id="lulus">Keterangan Lulus</h2>
+                        <h2>LPJ dan Pernyataan</h2>
                         <iframe class="frame" id="pdf_file3" allowfullscreen></iframe>
+                    </div>
+                    <div class="pdf-container">
+                        <h2 id="lulus">Keterangan Lulus</h2>
+                        <iframe class="frame" id="pdf_file4" allowfullscreen></iframe>
                     </div>
                     {{-- <div class="pdf-container">
                         <h2>PDF 3 - Title</h2>
