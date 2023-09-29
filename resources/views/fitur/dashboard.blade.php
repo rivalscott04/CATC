@@ -58,6 +58,10 @@
                                 <h2 id="lulus">Keterangan Lulus</h2>
                                 <embed class="frame" id="pdf_file3" src="lulus/{{$user['berkas_lulus']}}" allowfullscreen></embed>
                             </div>
+                            <div class="pdf-container">
+                                <h2 id="lulus">LPJ dan Pernyataan</h2>
+                                <embed class="frame" id="pdf_file4" src="lpj/{{$user['berkas_lpj']}}" allowfullscreen></embed>
+                            </div>
                         </div>
                     </div>
                 </div>

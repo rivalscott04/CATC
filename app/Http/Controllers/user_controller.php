@@ -208,6 +208,7 @@ class user_controller extends Controller
             'berkas_ktp' => Auth::user()['berkas_ktp'],
             'berkas_komit' => Auth::user()['berkas_komit'],
             'berkas_lulus' => Auth::user()['berkas_lulus'],
+            'berkas_lpj' => Auth::user()['berkas_lpj'],
         ];
         // dd($user);
         $data = jadwal::all();
