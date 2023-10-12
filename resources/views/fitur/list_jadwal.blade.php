@@ -36,6 +36,7 @@
                                     <th class="text-center">Ujian</th>
                                     <th class="text-center">Tanggal</th>
                                     <th class="text-center">Jam</th>
+                                    <th class="text-center">Link</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -46,6 +47,7 @@
                                     <td class="text-center">{{$item["jenis"]}}</td>
                                     <td class="text-center">{{$item["tanggal"]}}</td>
                                     <td class="text-center">{{$item["waktu"]}}</td>
+                                    <td class="text-center">{{$item["link"] == null ? "Belum ada link" : $item["link"]}}</td>
                                     <td class="text-center">
                                         <form action="hapus_ujian" method="post">
                                             @csrf
