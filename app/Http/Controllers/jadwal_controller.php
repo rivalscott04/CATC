@@ -85,7 +85,10 @@ class jadwal_controller extends Controller
             );
         }
 
-        jadwal::decrement('kuota', 1, ['id_jadwal' => $req['jadwal']]);
+        $jadwal = jadwal::find($req['jadwal']);
+        $jadwal->kuota = $jadwal->kuota -1;
+        $jadwal->save();
+        // jadwal::decrement('kuota', 1, ['id_jadwal' => $req['jadwal']]);
         
 
         listjadwal::create($data);
