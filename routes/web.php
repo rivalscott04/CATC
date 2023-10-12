@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
     
         Route::get('/list_jadwal',[jadwal_controller::class,'list_jadwal']);
         Route::post('/peserta_ujian',[jadwal_controller::class,'jadwal_peserta']);
+        Route::post('/add_link',[jadwal_controller::class,'add_link']);
         Route::post('/tambah_jadwal', [jadwal_controller::class, 'tambah_jadwal']);
         Route::post('/hapus_jadwal', [jadwal_controller::class, 'hapus_jadwal']);
         Route::post('/simpan_jadwal', [jadwal_controller::class, 'simpan_jadwal']);

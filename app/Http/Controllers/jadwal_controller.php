@@ -98,8 +98,19 @@ class jadwal_controller extends Controller
         ->join('users', 'listjadwals.id_peserta', '=', 'users.id')
         ->select('users.*', 'jadwals.*', 'listjadwals.id_list')
         ->where('jadwals.id_jadwal',$req['id'])->get();
-        // dd($data);
+        $id = $req['id'];
+        $link = jadwal::where('id_jadwal', $id)
+        ->select('link')
+        ->first();
         $loc ="dashboard";
-        return view("fitur.peserta_ujian", compact("loc", "data"));
+        return view("fitur.peserta_ujian", compact("loc", "data", "id", "link"));
+    }
+
+    public function add_link(Request $req) {
+        $jadwal = jadwal::find($req['id']);
+
+        $jadwal->link = $req['excel'];
+        $jadwal->save();
+        return redirect('/peserta_ujian');
     }
 }
