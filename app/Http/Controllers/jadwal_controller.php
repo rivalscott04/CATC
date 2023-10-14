@@ -7,6 +7,7 @@ use App\Models\listjadwal;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class jadwal_controller extends Controller
 {
@@ -97,14 +98,18 @@ class jadwal_controller extends Controller
 
     public function jadwal_peserta(Request $req) {
         // dd($req);
+        $id = Session::get('id')  ?? $req['id'];
+        Session::put('id', $id);
+
         $data = listjadwal::join('jadwals', 'listjadwals.id_jadwal', '=', 'jadwals.id_jadwal')
         ->join('users', 'listjadwals.id_peserta', '=', 'users.id')
         ->select('users.*', 'jadwals.*', 'listjadwals.id_list')
-        ->where('jadwals.id_jadwal',$req['id'])->get();
-        $id = $req['id'];
+        ->where('jadwals.id_jadwal',$id)->get();
+        
         $link = jadwal::where('id_jadwal', $id)
         ->select('link')
         ->first();
+        // dd($id);
         $loc ="dashboard";
         return view("fitur.peserta_ujian", compact("loc", "data", "id", "link"));
     }

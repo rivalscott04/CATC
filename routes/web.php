@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/upload_berkas', [user_controller::class, 'upload_berkas']);
     
         Route::get('/list_jadwal',[jadwal_controller::class,'list_jadwal']);
+        Route::get('/peserta_ujian',[jadwal_controller::class,'jadwal_peserta']);
         Route::post('/peserta_ujian',[jadwal_controller::class,'jadwal_peserta']);
         Route::post('/add_link',[jadwal_controller::class,'add_link']);
         Route::post('/tambah_jadwal', [jadwal_controller::class, 'tambah_jadwal']);
