@@ -60,7 +60,10 @@ class jadwal_controller extends Controller
                 ["dp" => 1]
             );
         }
-        jadwal::increment('kuota', 1, ['id_jadwal' => $req['jadwal']]);
+        $jadwal = jadwal::find($req['jadwal']);
+        $jadwal->kuota = $jadwal->kuota +1;
+        $jadwal->save();
+        // jadwal::increment('kuota', 1, ['id_jadwal' => $req['jadwal']]);
         return redirect("/dashboard");
     }
 
